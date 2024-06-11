@@ -190,4 +190,19 @@ public class UsersController {
         }
     }
 
+    @PostMapping("/authenticate")
+    public ResponseEntity<Object> userAuth(@RequestBody UsersDTO usersDTO){
+        String message;
+        Optional<Optional<Users>> userOptional = Optional.ofNullable(usersService.findOneByUsernameAndPassword(
+                usersDTO.getUsername()
+                , passwordEncoder.encode(usersDTO.getPassword())
+                ));
+        if (userOptional.isPresent()) {
+            message = "success";
+            return ResponseHandler.responseBuilder(message, HttpStatus.OK, null);
+        }
+        message ="fail";
+        return ResponseHandler.responseBuilder(message, HttpStatus.BAD_REQUEST, null);
+    }
+
 }
