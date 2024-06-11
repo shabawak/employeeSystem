@@ -1,0 +1,683 @@
+<div>
+  
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
+        </li>
+        
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid mt-4" style="overflow-y: auto; height:400px;">
+    <table class="table table-primar table-hover">
+      <thead class="text-center">
+        <tr>
+          <th scope="col">Emp ID</th>
+          <th scope="col">Last name</th>
+          <th scope="col">First name</th>
+          <th scope="col">Role</th>
+          <th scope="col">Email</th>
+          <th scope="col">Action</th>
+          
+        </tr>
+      </thead>
+      <tbody *ngFor="let empl of empArr" class="text-center">
+        <tr>
+          <td >{{empl.employmentNumber}}</td>
+          <td>{{ empl.l_name }}</td>
+          <td>{{ empl.f_name }}</td>
+          <td>{{ empl.jobTitle}}</td>
+          <td>{{ empl.email}}</td>
+          <td>
+            <button class="btn btn-outline-primary me-2" type="button"><i class="bi bi-pencil-square" title="Edit"></i></button>
+            <button class="btn btn-outline-danger me-2" type="button" title="Delete"><i class="bi bi-x"></i></button>
+            <button class="btn btn-outline-success" type="button" title="View"><i class="bi bi-eye"></i></button>
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+  
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Employee</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!--PERSONAL DETAILS-->
+            <div class="container border border-success-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">PERSONAL INFORMATION</div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Surname*</span>
+                <input type="text" class="form-control" placeholder="surname" aria-label="Surname" aria-describedby="basic-addon1" required>
+                <span class="input-group-text" id="basic-addon1">First name*</span>
+                <input type="text" class="form-control" placeholder="firstname" aria-label="First name" aria-describedby="basic-addon1" required>
+                <span class="input-group-text" id="basic-addon1">Other name</span>
+                <input type="text" class="form-control" placeholder="other name" aria-label="Other name" aria-describedby="basic-addon1" required>
+              </div>
+              
+              <div class="input-group mb-3">
+                <div class="input-group-text me-4">
+                  <!--GENDER-->
+                  <span class="me-2">Gender*</span>
+                  
+                    <span class="input-group-text">Male
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="gender" value="Male" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">Female
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="gender" value="Female" aria-label="Checkbox for following text input">
+                  </span>
+                </div>
+                  <!--//-->
+                
+                  <!--MARITAL STATUS-->
+                <div class="input-group-text">
+                  
+                  <span class="me-2">Marital Status*</span>
+                  
+                    <span class="input-group-text">Single
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="marital_status" value="Single" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">Married
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="marital_status" value="Married" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">Divorced
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="marital_status" value="Divorced" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">Widowed
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="marital_status" value="Widowed" aria-label="Checkbox for following text input">
+                    </span>
+                  </div>
+                  <!--//-->
+                
+              </div>
+              
+
+              
+              <div class="input-group mb-3">
+                <!--BIRTH YEAR-->
+                <span class="input-group-text">Birth Date*</span>
+                <input type="date" class="form-control me-2" name="birth_date"  aria-label="Other name" required>
+                <!--//-->
+
+                <!--RELIGION-->
+                <span class="input-group-text">Religion*</span>
+                <input type="text" class="form-control" name="religion" required>
+                <!--//-->
+              </div>
+              
+
+              
+              <div class="input-group mb-3">
+                <!--EMAIL-->
+                <span class="input-group-text">Email*</span>
+                <input type="email" placeholder="someone@example.com" class="form-control me-2" name="email_address"required>
+                <!--//-->
+
+                <!--PHONE NUMBER-->
+                <span class="input-group-text">Phone*</span>
+                <input type="tel"  placeholder="02330000000" class="form-control" name="email_address" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                <!--//-->
+              </div>
+
+              <div class="input-group mb-3">
+                <!--SSNIT-->
+                <span class="input-group-text" id="ssnit_number">SSNIT Number*</span>
+                <input type="text" class="form-control me-2" name="ssnit_number" placeholder="eg A01000000000"  aria-describedby="ssnit_number" required>
+                <!--//-->
+
+                <!--SSNIT-->
+                <span class="input-group-text" id="gh_card">GH-Card*</span>
+                <input type="text" class="form-control" name="gh_card" placeholder="eg GHA-12345678-1"  aria-describedby="gh_card" required>
+                
+              </div>
+              
+              <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload Photo</label>
+                <input type="file" class="form-control" name="file_photo" id="inputGroupFile01">
+              </div>
+              <!--//-->
+            </div>
+            
+            <!--ADDRESS-->
+            <div class="container border border-success-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">ADDRESS</div>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2">Current Address*</span>
+                <input type="text" class="form-control" name="current_address" placeholder="employee current address" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                
+              </div>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="digital_address">Digital Address*</span>
+                <input type="text" class="form-control" name="digital_address" placeholder="eg WT-0000-123" aria-describedby="digital_address" required>
+                <span class="input-group-text" id="street_name">Street Name*</span>
+                <input type="text" class="form-control" name="street_name" placeholder="eg kofikrom ave"  aria-describedby="street_name" required>
+                <span class="input-group-text" id="community">Community*</span>
+                <input type="text" class="form-control" name="community" placeholder="eg Kofikrom"  aria-describedby="community" required>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="region">Region*</span>
+                <input type="text" class="form-control" name="region" placeholder="eg Greater Kumasi" aria-describedby="region" required>
+                <span class="input-group-text" id="district_name">District Name*</span>
+                <input type="text" class="form-control" name="district_name" placeholder="eg Nsuaem dist"  aria-describedby="district_name" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="postal_area">Postal Area*</span>
+                <input type="text" class="form-control" name="postal_area" placeholder="eg Nsuta-Wassaw" aria-describedby="postal_area" required>
+                <span class="input-group-text" id="post_code">Post Code*</span>
+                <input type="text" class="form-control" name="post_code" placeholder="eg WT0000"  aria-describedby="post_code" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="landmark">Landmark*</span>
+                <input type="text" class="form-control" name="landmark" placeholder="eg opposite MM school"  aria-describedby="landmark" required>
+                
+              </div>
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+            
+            <!--BANK DETAILS-->
+            <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">BANK INFORMATION</div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="account-name">Account Holder name*</span>
+                <input type="text" class="form-control" name="account_name" placeholder="eg John Doe" aria-label="account-name" aria-describedby="account-name" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="bank-name">Bank Name*</span>
+                <input type="text" class="form-control" name="bank_name" placeholder="bank_name" aria-label="bank-name" aria-describedby="bank-name" required>
+                <span class="input-group-text" id="branch-name">Branch (City)*</span>
+                <input type="text" class="form-control" placeholder="branch name" aria-label="branch-name" aria-describedby="branch-name" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="account-type">Account Type*</span>
+                <input type="text" class="form-control" name="bank_name" placeholder="eg savings" aria-label="account-type" aria-describedby="account-type" required>
+                <span class="input-group-text" id="account-number">Account Number*</span>
+                <input type="number" min="0" step="1" class="form-control" name="account_number" placeholder="account-number" aria-label="account-number" aria-describedby="account-number" required>
+                
+              </div>
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+            <!--PAYMENT DETAILS-->
+            <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">PARENT INFORMATION</div>
+              <table class="table table-primar table-hover">
+                <thead class="text-center">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Occupation</th>
+                    <th scope="col">Remarks</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Father</td>
+                    <td>
+                        <input type="text" class="form-control" name="father_name" placeholder=""  required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="father_age" placeholder="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="father_occupation" placeholder="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="father_remarks" placeholder="" required>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>Mother</td>
+                    <td>
+                        <input type="text" class="form-control" name="mother_name" placeholder=""  required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="mother_age" placeholder="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="mother_occupation" placeholder="" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="mother_remarks" placeholder="" required>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+            <!--EMERGENCY CONTACT DETAILS-->
+            <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">EMERGENCY CONTACT DETAILS</div>
+              
+              <label for="" class="form-label">Contact 1</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="emergency_contact_1">Full Name*</span>
+                <input type="text" class="form-control" name="emergency_contact_1" placeholder="eg John Doe" aria-label="emergency_contact_1" aria-describedby="emergency_contact_1" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="emergency_contact_1_address">Residential Address*</span>
+                <input type="text" class="form-control" name="emergency_contact_1_address" placeholder="eg John Doe" aria-label="emergency_contact_1_address" aria-describedby="emergency_contact_1_address" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="emergency_contact_1_relationship">Relationship*</span>
+                <input type="text" class="form-control me-2" name="emergency_contact_1_relationship" placeholder="eg mother" aria-label="emergency_contact_1_relationship" aria-describedby="emergency_contact_1_relationship" required>
+                <span class="input-group-text" id="emergency_contact_1_phone">Phone Number*</span>
+                <input type="text" class="form-control me-2" name="emergency_contact_1_phone" placeholder="eg 054000000" aria-label="emergency_contact_1_phone" aria-describedby="emergency_contact_1_phone" required>
+                <span class="input-group-text" id="emergency_contact_1_email">Email*</span>
+                <input type="text" class="form-control" name="emergency_contact_1_email" placeholder="eg mycontact@example.com" aria-label="emergency_contact_1_email" aria-describedby="emergency_contact_1_email" required>
+                
+              </div>
+
+              <label for="" class="form-label">Contact 2</label>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="emergency_contact_1">Full Name*</span>
+                <input type="text" class="form-control" name="emergency_contact_1" placeholder="eg John Doe" aria-label="emergency_contact_1" aria-describedby="emergency_contact_1" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="emergency_contact_1_address">Residential Address*</span>
+                <input type="text" class="form-control" name="emergency_contact_1_address" placeholder="eg John Doe" aria-label="emergency_contact_1_address" aria-describedby="emergency_contact_1_address" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="emergency_contact_1_relationship">Relationship*</span>
+                <input type="text" class="form-control me-2" name="emergency_contact_1_relationship" placeholder="eg mother" aria-label="emergency_contact_1_relationship" aria-describedby="emergency_contact_1_relationship" required>
+                <span class="input-group-text" id="emergency_contact_1_phone">Phone Number*</span>
+                <input type="text" class="form-control me-2" name="emergency_contact_1_phone" placeholder="eg 054000000" aria-label="emergency_contact_1_phone" aria-describedby="emergency_contact_1_phone" required>
+                <span class="input-group-text" id="emergency_contact_1_email">Email*</span>
+                <input type="text" class="form-control" name="emergency_contact_1_email" placeholder="eg mycontact@example.com" aria-label="emergency_contact_1_email" aria-describedby="emergency_contact_1_email" required>
+                
+              </div>
+
+            </div>
+            <!--//-->
+
+            <!--EMPLOYMENT DETAILS-->
+            <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">EMPLOYMENT DETAILS</div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="job">Job Title*</span>
+                <input type="text" class="form-control" name="job_title" placeholder="eg developer" aria-label="job_title" aria-describedby="job_title" required>
+                <span class="input-group-text" id="department">Department*</span>
+                <input type="text" class="form-control" name="department" placeholder="eg engineering" aria-label="department" aria-describedby="department" required>
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <div class="input-group-text me-4">
+                  <!---->
+                  <span class="me-2">Employment type*</span>
+                  
+                    <span class="input-group-text">Part-time
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="employment_type" value="Part-time" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">Contract
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="employment_type" value="Contract" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">Full-time
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="employment_type" value="Full-time" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">NSP
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="employment_type" value="NSP" aria-label="Checkbox for following text input">
+                    </span>
+                    <span class="input-group-text ms-2">Intern
+                      <input class="form-check-input mt-0 ms-2" type="radio" name="employment_type" value="Intern" aria-label="Checkbox for following text input">
+                  </span>
+                </div>
+                <span class="input-group-text ">Employee Number*</span>
+                <input type="text" class="form-control" name="employee_number" placeholder="eg 123" aria-label="job_title" aria-describedby="job_title" required>
+              
+                  <!--//-->
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="employment-date">Start Date*</span>
+                <input type="date" class="form-control me-2" name="employment_date" aria-label="employment-date" aria-describedby="employment-date" required>
+                <span class="input-group-text" id="supervisor">Supervisor*</span>
+                <input type="text" class="form-control" placeholder="supervisor" name="supervisor" aria-label="supervisor" aria-describedby="supervisor" required>
+                
+              </div>
+
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+            <!--EDUCATION AND QUALIFICATIONS-->
+            <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">EDUCATION AND QUALIFICATIONS</div>
+              <table class="table table-primar table-hover">
+                <thead class="text-center">
+                  <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Institution</th>
+                    <th scope="col">Major/Field of study</th>
+                    <th scope="col">Graduation Date</th>
+                    <th scope="col">Certificate Type</th>
+                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>
+                        <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="date" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>2</td>
+                    <td>
+                        <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    
+                    <td>
+                      <input type="date" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>3</td>
+                    <td>
+                        <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="date" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>4</td>
+                    <td>
+                        <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="date" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+             
+             <!--PREVIOUS EMPLOYMENT-->
+             <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">PREVIOUS EMPLOYMENT</div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="company-name">Institution Name*</span>
+                <input type="text" class="form-control" name="company_name" placeholder="" aria-label="company-name" aria-describedby="company-name" required>
+                
+                
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="company-name">Job Position*</span>
+                <input type="text" class="form-control me-2" name="job_position" placeholder="" aria-label="company-name" aria-describedby="company-name" required>
+                <span class="input-group-text" id="start-date">Start Date*</span>
+                <input type="date" class="form-control" name="end-date" placeholder="" aria-label="start-date" aria-describedby="start-date" required>
+                <span class="input-group-text" id="start-date">End Date*</span>
+                <input type="date" class="form-control" name="end_date" placeholder="" aria-label="end-date" aria-describedby="end-date" required>
+                
+              </div>
+              <div class="input-group mb-3">
+                <span class="input-group-text">Reason for leaving*</span>
+                <input type="text" class="form-control" name="reason_for_leaving" required>
+                
+              </div>
+
+             
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+            <!--REFERENCE CONTACT DETAILS-->
+            <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">REFERENCE CONTACT DETAILS</div>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="reference-name">Reference Name*</span>
+                <input type="text" class="form-control" name="reference_name" placeholder="" aria-label="reference-name" aria-describedby="reference-name" required>
+                <span class="input-group-text" id="reference-relationship">Relationship*</span>
+                <input type="text" class="form-control" name="reference_relationship" placeholder="" aria-label="reference-relationship" aria-describedby="reference-relationship" required>
+            
+              </div>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="reference-institution">Institution*</span>
+                <input type="text" class="form-control me-2" name="reference_institution" placeholder="" aria-label="reference-institution" aria-describedby="reference-institution" required>
+                <span class="input-group-text" id="reference-position">Position*</span>
+                <input type="text" class="form-control" name="reference_position">
+                
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">Email*</span>
+                <input type="email" class="form-control me-2" name="reference_email" placeholder="" aria-label="reference-email" aria-describedby="reference-email" required>
+                <span class="input-group-text">Phone*</span>
+                <input type="tel" class="form-control" name="reference_phone" placeholder="" aria-label="reference-phone" aria-describedby="reference-email" required>
+              </div>
+
+             
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+            <!--UNDERSTANDING OF LANGUAGE-->
+            <div class="container border border-primary-subtle rounded mb-3">
+              <div class="text-center bg-dark text-white mb-4 ">UNDERSTANDING OF LANGUAGE</div>
+              <div>
+                <button  class="btn" type="button">Add</button>
+              </div>
+              <table class="table table-primar table-hover">
+                <thead >
+                  <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Read</th>
+                    <th scope="col">Write</th>
+                    <th scope="col">Speak</th>
+                  
+                  </tr>
+                </thead>
+                <tbody class="text-center content-align-centre" id="lbody">
+                  <tr>
+                    <td>1</td>
+                    <td>
+                      
+                        <input type="text" class="form-control" name="language_name_1" placeholder=""required>
+                      
+                        
+                    </td>
+                    <td class="align-middle">
+                      <div class="input-group mb-3 ">
+                        <div class="input-group-text text-center">
+                          <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="true" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    
+                  </tr>
+
+                  <tr>
+                    <td>2</td>
+                    <td>
+                      
+                        <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                    
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    
+                  </tr>
+
+                  <tr>
+                    <td>3</td>
+                    <td>
+                      
+                        <input type="text" class="form-control" name="job_title" placeholder="" aria-label="job_title" aria-describedby="job_title" required>
+                      
+                        
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    <td>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                        </div>
+                        
+                      </div>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+              <!--//-->
+
+            </div>
+            <!--//-->
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<router-outlet></router-outlet>

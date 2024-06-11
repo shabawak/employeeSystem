@@ -1,2 +1,6 @@
-package com.dkhagangroup.employeeSystem.enums;public enum Gender {
+package com.dkhagangroup.employeeSystem.enums;
+
+public enum Gender {
+    MALE,
+    FEMALE
 }
