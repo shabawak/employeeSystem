@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Data
 @Entity
 @Table(name = "education")
 public class Education {
@@ -27,7 +28,6 @@ public class Education {
     @Column(nullable = false)
     private String certificate_type;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "emp_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;
 }

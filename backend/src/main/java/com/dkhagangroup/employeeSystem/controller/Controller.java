@@ -10,12 +10,10 @@ import com.dkhagangroup.employeeSystem.response.ResponseHandler;
 import com.dkhagangroup.employeeSystem.service.BankService;
 import com.dkhagangroup.employeeSystem.service.EmployeeService;
 import com.dkhagangroup.employeeSystem.service.UsersService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -245,7 +243,7 @@ public class Controller {
 
     @PostMapping("/employee/employee-bankdetail/new")
     public ResponseEntity<String> addEmployeeWithBankDetail(@RequestBody EmployeeDto employeeDto) {
-        employeeService.addEmployeeWithBankDetails(employeeDto);
+        employeeService.addEmployee(employeeDto);
         return ResponseEntity.ok("Employee added with bank details");
     }
 
@@ -259,7 +257,7 @@ public class Controller {
     @GetMapping("/getBankDetailByEmployee/{id}")
     public ResponseEntity<Object> fetcthBankDetailByEmployee(@PathVariable("id")Integer id){
         String message ="output";
-        BankDetail bankDetail = employeeService.fetcthBankDetailByEmployeeId(id);
+        BankDetail bankDetail = employeeService.fetchBankDetailByEmployeeId(id);
         return ResponseHandler.responseBuilder(message, HttpStatus.OK, bankDetail);
     }
 

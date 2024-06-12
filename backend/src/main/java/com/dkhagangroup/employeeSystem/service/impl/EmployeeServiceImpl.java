@@ -61,14 +61,14 @@ public class EmployeeServiceImpl implements EmployeeService
     }
     @Transactional()
     @Override
-    public void addEmployeeWithBankDetails(EmployeeDto employeeDto) {
+    public void addEmployee(EmployeeDto employeeDto) {
         Employee employee = modelMapper.map(employeeDto, Employee.class);
         employeeRepository.save(employee);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public BankDetail fetcthBankDetailByEmployeeId(Integer empId){
+    public BankDetail fetchBankDetailByEmployeeId(Integer empId){
         Optional<Employee> optionalEmployee = employeeRepository.findById(empId);
         if (optionalEmployee.isPresent()){
             Employee employee = optionalEmployee.get();

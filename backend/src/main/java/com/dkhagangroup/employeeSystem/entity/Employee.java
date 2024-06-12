@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -85,43 +86,41 @@ public class Employee {
     private BankDetail bank;
 
 
+
+
+    //RELATIONSHIPS
+    //BANK
+    //@OneToOne(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    //private BankDetail bankDetail;
+    //REFERENCE
+    //@OneToOne(cascade = CascadeType.ALL,mappedBy = "employee",fetch = FetchType.LAZY)
+    //private Reference reference;
+    //PARENT
+    //@OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
+    //private Parent parent;
+
+    //PREV-EMPLOYMENT
+    //@OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
+    //private PrevEmployment prevEmployment;
+
+    //ADDRESS
+    //@OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
+    //private Address address;
+
+
+    //LANGUAGE
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    //private List<Language> language;
+
+    //EDUCATION
+    @OneToMany(targetEntity = Education.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "emp_id", referencedColumnName = "id",nullable = false)
+    private List<Education> education = new ArrayList<>();
+
+
     @JsonBackReference
     public BankDetail getBank() {
         return bank;
     }
-
-    /*public void setBank(BankDetail bank) {
-        this.bank = bank;
-    }*/
-
-    //RELATIONSHIPS
-    //BANK
-   // @OneToOne(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
-    //private BankDetail bankDetail;
-    //REFERENCE
-    /*@OneToOne(cascade = CascadeType.ALL,mappedBy = "employee",fetch = FetchType.LAZY)
-    private Reference reference;
-    //PARENT
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
-    private Parent parent;
-
-    //PREV-EMPLOYMENT
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
-    private PrevEmployment prevEmployment;
-
-    //ADDRESS
-    @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
-    private Address address;
-
-
-    //LANGUAGE
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
-    private List<Language> language;
-
-    //EDUCATION
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
-    private List<Education> education;*/
-
-
 
 }
