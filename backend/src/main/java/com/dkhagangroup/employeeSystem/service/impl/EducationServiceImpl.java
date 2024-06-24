@@ -6,6 +6,7 @@ import com.dkhagangroup.employeeSystem.entity.Employee;
 import com.dkhagangroup.employeeSystem.repository.EducationRepository;
 import com.dkhagangroup.employeeSystem.service.EducationService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.Optional;
 @Service
 @AllArgsConstructor
 public class EducationServiceImpl implements EducationService {
-
+    @Autowired
     private EducationRepository educationRepository;
 
     /**
@@ -40,7 +41,7 @@ public class EducationServiceImpl implements EducationService {
     }
 
     /**
-     * @return : List
+     * @return : List of Education entities
      */
     @Override
     public List<Education> getAllEducations() {

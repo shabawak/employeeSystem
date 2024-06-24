@@ -18,6 +18,6 @@ public interface EmployeeService {
     public List<Employee> getAllEmployee();
     public BankDetail fetchBankDetailByEmployeeId(Integer empId);
 
-
     public void addEmployee(EmployeeDto employeeDto);
+    public void addEmployeeW(EmployeeDto employeeDto);
 }

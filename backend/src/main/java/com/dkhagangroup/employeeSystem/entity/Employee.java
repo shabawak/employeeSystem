@@ -3,7 +3,7 @@ package com.dkhagangroup.employeeSystem.entity;
 import com.dkhagangroup.employeeSystem.enums.EmploymentType;
 import com.dkhagangroup.employeeSystem.enums.Gender;
 import com.dkhagangroup.employeeSystem.enums.MaritalStatus;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -81,8 +81,7 @@ public class Employee {
     @Column(name = "supervisor", nullable = false)
     private String supervisor;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "bank_id", referencedColumnName = "id",nullable = false)
+    @OneToOne(mappedBy = "employee",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private BankDetail bank;
 
 
@@ -104,23 +103,29 @@ public class Employee {
     //private PrevEmployment prevEmployment;
 
     //ADDRESS
-    //@OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
-    //private Address address;
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "employee", fetch = FetchType.LAZY)
+    private Address address;
 
 
     //LANGUAGE
-    //@OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
-    //private List<Language> language;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
+    private List<Languages> language;
 
     //EDUCATION
-    @OneToMany(targetEntity = Education.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name = "emp_id", referencedColumnName = "id",nullable = false)
+    @OneToMany( mappedBy = "employee",cascade = CascadeType.ALL,fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Education> education = new ArrayList<>();
 
 
-    @JsonBackReference
-    public BankDetail getBank() {
-        return bank;
-    }
+    @JsonManagedReference
+    public BankDetail getBank() {return bank;}
+
+    @JsonManagedReference
+    public List<Education> getEducation(){return education;}
+
+    @JsonManagedReference
+    public List<Languages> getLanguage(){return language;}
+
+    @JsonManagedReference
+    public Address getAddress(){return address;}
 
 }

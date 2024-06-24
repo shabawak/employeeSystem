@@ -1,10 +1,12 @@
 package com.dkhagangroup.employeeSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
 @Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
@@ -37,7 +39,7 @@ public class Address {
     private String distName;
 
     @Column(nullable = false)
-    private String postAreal;
+    private String postArea;
 
     @Column(nullable = false)
     private String postCode;
@@ -48,6 +50,14 @@ public class Address {
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "emp_id", referencedColumnName = "id", nullable = false)
     private Employee employee;
+
+
+
+    @JsonBackReference
+    public Employee getEmployee(){return employee;}
+
+
+
 
 
 }

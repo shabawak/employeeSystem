@@ -1,23 +1,17 @@
 package com.dkhagangroup.employeeSystem.dto;
 
-import com.dkhagangroup.employeeSystem.entity.*;
 import com.dkhagangroup.employeeSystem.enums.EmploymentType;
 import com.dkhagangroup.employeeSystem.enums.Gender;
 import com.dkhagangroup.employeeSystem.enums.MaritalStatus;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeDto {
+
+public class EmployeeInfoDto {
     private Long id;
     //personal details
 
@@ -68,14 +62,4 @@ public class EmployeeDto {
 
     private String supervisor;
     //Bank detail
-
-    private BankDetail bank;
-
-    private List<Education> education = new ArrayList<>();
-
-    private Address address;
-
-    private List<Languages> languages = new ArrayList<>();
-
-
 }

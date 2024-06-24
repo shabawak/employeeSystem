@@ -1,5 +1,6 @@
 package com.dkhagangroup.employeeSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,5 +30,9 @@ public class Education {
     private String certificate_type;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "emp_id", referencedColumnName = "id",nullable = false)
     private Employee employee;
+
+    @JsonBackReference
+    public Employee getEmployee(){return employee;}
 }

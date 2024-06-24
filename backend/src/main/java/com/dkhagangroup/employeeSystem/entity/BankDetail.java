@@ -1,6 +1,7 @@
 package com.dkhagangroup.employeeSystem.entity;
 
 import com.dkhagangroup.employeeSystem.enums.AccountType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,13 +34,14 @@ public class BankDetail {
     @Column(nullable = false)
     private int account_number;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "bank", fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "emp_Id", referencedColumnName = "id",nullable = false)
     private Employee employee;
 
 
 
 
-    @JsonManagedReference
+    @JsonBackReference
     public Employee getEmployee() {
         return employee;
     }

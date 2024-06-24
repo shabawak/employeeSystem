@@ -1,5 +1,6 @@
 package com.dkhagangroup.employeeSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,8 +10,9 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "language")
-public class Language {
+@Data
+@Table(name = "languages")
+public class Languages {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,15 +21,18 @@ public class Language {
     private String language;
 
     @Column(nullable = false)
-    private String aReads;
+    private Boolean a_reads;
 
     @Column(nullable = false)
-    private String aWites;
+    private Boolean a_writes;
 
     @Column(nullable = false)
-    private String aspeaks;
+    private Boolean a_speaks;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "emp_id", referencedColumnName = "id", nullable = false)
     private Employee employee;
+
+    @JsonBackReference
+    public Employee getEmployee(){return employee;}
 }
